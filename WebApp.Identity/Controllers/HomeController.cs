@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApp.Identity.Models;
 
@@ -18,15 +21,15 @@ namespace WebApp.Identity.Controllers
         {
             _userManager = userManager;
         }
-        private readonly ILogger<HomeController> _logger;
+        //luizprivate readonly ILogger<HomeController> _logger;
 
         private readonly UserManager<MyUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        /*luizpublic HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
-
+        */
         public IActionResult Index()
         {
             return View();
@@ -36,6 +39,35 @@ namespace WebApp.Identity.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+                {
+                    var identtity = new ClaimsIdentity("cookies");
+                    identtity.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
+                    identtity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
+
+                    await HttpContext.SignInAsync("cookies", new ClaimsPrincipal(identtity));
+                    
+                    return RedirectToAction("About");
+                }
+
+                ModelState.AddModelError("", "Usuário ou Senha inválida.");
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Register(RegisterModel model)
         {
@@ -60,6 +92,19 @@ namespace WebApp.Identity.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Register()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Sucess()
         {
             return View();
         }
