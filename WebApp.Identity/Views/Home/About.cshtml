@@ -7,8 +7,224 @@
 <ul>
     @foreach(var claim in User.Claims)
     {
-        <li><b>@claim.Type</b>: @claim.Value</li>    
-    }
-    
+        //<li><b>@claim.Type</b>: @claim.Value</li>    
+		<li><b>@claim.Value</b></li>    
+    }    
 </ul>
 
+<html lang="pt-br">
+
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Links Favoritos</title>
+
+	<style type="text/css">
+		.row-table-head {
+			padding: 2px 2px;
+			line-height: 20px;
+			font-family: Verdana;
+			font-size: 13px;			
+		}
+
+		.row-table-head .col-table {
+			padding: 2px 10px;
+			border: 1px solid #8b4e07;
+			background-color: #EC7000;
+			color: #fafbfc;
+		}
+
+		.row-table a, .col-table {
+			text-decoration: #341c8d;
+			color: #585758;
+			display: grid;
+			padding: 2px 0;
+			font-family: Verdana;
+			font-size: 11px;
+		}
+
+		.row-table a:hover .col-table {
+			background-color: #85add4;
+			color: #fafbfc;
+		}
+
+		.row-table .col-table {
+			padding: 2px 10px;
+		}
+
+		tr {
+			vertical-align: top;
+		}
+
+		fieldset {
+			display: block;
+			margin-left: 5px;
+			margin-right: 5px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			padding-left: 5px;
+			padding-right: 5px;
+			border: 1px groove (internal value);
+		}
+
+		legend {
+			display: block;
+			padding-left: 5px;
+			padding-right: 5px;
+			border: none;
+			font-family: Verdana;
+			color: #341c8d;
+			border-color: #341c8d;
+		}
+
+		.horasTrabalhadas {
+			width: 44%;
+		}
+
+		.submit {
+			padding-top: 3%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- ########## GERAL ########## -->
+	<fieldset>
+		<legend>Plataforma Integrada de Gestão Municipal</legend>
+		<div class="table">
+			<table>
+				<tr>	
+					<td>
+						<div class="row-table-head">
+							<div class="col-table">Sistema SAFiM</div>
+						</div>
+						<div class="row-table">
+							<a href="https://jiracorp.ctsp.prod.cloud.ihf/secure/Dashboard.jspa" target="_blank">
+								<div class="col-table">Acessar Relatório Financeiro</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://iconectados.sharepoint.com/sites/iu-dashflix/index.html#/" target="_blank">
+								<div class="col-table">Consultar Saldo Conta</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://iconectados.sharepoint.com/sites/iu-dashflix/index.html#/" target="_blank">
+								<div class="col-table">Acessar despesas do Mês</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://iconectados.sharepoint.com/sites/iu-dashflix/index.html#/" target="_blank">
+								<div class="col-table">Acessar salários Funcionários</div>
+							</a>
+						</div>
+						
+					</td>
+					<td>
+						<div class="row-table-head">
+							<div class="col-table">Sistema SASCi</div>
+						</div>
+						<div class="row-table">
+							<a href="https://confluencecorp.ctsp.prod.cloud.ihf/#all-updates" target="_blank">
+								<div class="col-table">Acessar Consultas Realizadas</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://confluencecorp.ctsp.prod.cloud.ihf/#all-updates" target="_blank">
+								<div class="col-table">Relatório UPA's em Funcionamento</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://confluencecorp.ctsp.prod.cloud.ihf/#all-updates" target="_blank">
+								<div class="col-table">Relatório Covid-19</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://confluencecorp.ctsp.prod.cloud.ihf/#all-updates" target="_blank">
+								<div class="col-table">Vacinação Cidade</div>
+							</a>
+						</div>
+					</td>
+					<td>
+						<div class="row-table-head">
+							<div class="col-table">Sistema SAEM</div>
+						</div>
+						<div class="row-table">
+							<a href="http://spcorp5.itau/sites/franquiatecnologia/sonda.html" target="_blank">
+								<div class="col-table">Relatório Alunos</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://tableau.itau/#/site/Corporativo/views/PainelCapacity/PortalCapacity?:iid=1" target="_blank">
+								<div class="col-table">Cadastro de Professores</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://microsservicos.automacaoinfra.itau/cloud-control-tower/detalhes-servicos-ofertas/RELACIONAMENTO%20COM%20O%20CLIENTE%20(C0040)/?mes_ano=10%2F2021" target="_blank">
+								<div class="col-table">Relatório desempenho Enem(Cidade)</div>
+							</a>
+						</div>
+					</td>					
+				</tr>
+			</table>
+			<table>
+				<tr>	
+					<td>
+						<div class="row-table-head">
+							<div class="col-table">Sistema STUR</div>
+						</div>
+						<div class="row-table">
+							<a href="https://portalcorp.itau-unibanco/pt/Paginas/default.aspx" target="_blank">
+								<div class="col-table">Consulta Pagamentos IPTU/ITR</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://portalcorp.itau-unibanco/pt/Paginas/default.aspx" target="_blank">
+								<div class="col-table">Consulta multas</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://portalcorp.itau-unibanco/pt/Paginas/default.aspx" target="_blank">
+								<div class="col-table">Emissão 2ª via boletos</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="https://portalcorp.itau-unibanco/pt/Paginas/default.aspx" target="_blank">
+								<div class="col-table">Registro de Imóveis</div>
+							</a>
+						</div>			
+					</td>
+
+					<td>
+						<div class="row-table-head">
+							<div class="col-table">Sistema SGM</div>
+						</div>
+						<div class="row-table">
+							<a href="https://www.ibge.gov.br/" target="_blank">
+								<div class="col-table">Modulo Informações Georreferenciadas</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="http://painelssid.itau.corp.ihf/Reports/report/SSID/SQL_Server/Requests/Painel" target="_blank">
+								<div class="col-table">Serviço ao Cidadão</div>
+							</a>
+						</div>						
+						<div class="row-table">
+							<a href="http://painelssid.itau.corp.ihf/Reports/report/SSID/SQL_Server/Requests/Painel" target="_blank">
+								<div class="col-table">Gestão estrategica de Projetos</div>
+							</a>
+						</div>
+						<div class="row-table">
+							<a href="http://painelssid.itau.corp.ihf/Reports/report/SSID/SQL_Server/Requests/Painel" target="_blank">
+								<div class="col-table">Modulo de Business Intelligence(BI)</div>
+							</a>
+						</div>
+					</td>					
+				</tr>
+			</table>
+		</div>
+	</fieldset>
+	<br/>
+</body>

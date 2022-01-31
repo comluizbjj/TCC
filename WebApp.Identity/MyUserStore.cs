@@ -17,14 +17,22 @@ namespace WebApp.Identity
                     "insert into Users([Id]," +
                     "[UserName]," +
                     "[NormalizedUserName]," +
-                    "[PasswordHash]) " +
-                    "Values(@id,@username,@normalizeUserName,@passwordHash)",
+                    "[PasswordHash]," +
+                    "[Email]," +
+                    "[Cpf]," +
+                    "[Nome]," +
+                    "[Telefone]) " +
+                    "Values(@id,@username,@normalizeUserName,@passwordHash,@email,@cpf,@nome,@telefone)",
                    new
                    {
                        id = user.Id,
                        userName = user.UserName,
                        normalizeUserName = user.NormalizeUserName,
                        passwordHash = user.PasswordHash,
+                       email = user.Email,
+                       cpf = user.Cpf,
+                       nome = user.Nome,
+                       telefone = user.Telefone,
                    });
             }
             return IdentityResult.Success;
@@ -80,6 +88,11 @@ namespace WebApp.Identity
             return Task.FromResult(user.NormalizeUserName);
         }
 
+        public Task<string> GetEmailAsync(MyUser user, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(user.Email);
+        }
+
         public Task<string> GetUserIdAsync(MyUser user, CancellationToken cancellationToken)
         {
             return Task.FromResult(user.Id);
@@ -93,6 +106,12 @@ namespace WebApp.Identity
         public Task SetNormalizedUserNameAsync(MyUser user, string normalizedName, CancellationToken cancellationToken)
         {
             user.NormalizeUserName = normalizedName;
+            return Task.CompletedTask;
+        }
+
+        public Task SetEmail(MyUser user, string email, CancellationToken cancellationToken)
+        {
+            user.Email = email;
             return Task.CompletedTask;
         }
 

@@ -24,7 +24,14 @@ namespace WebApp.Identity
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddIdentityCore<MyUser>(options => { });
+            services.AddIdentityCore<MyUser>(options => { 
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequiredLength = 4;
+
+            });
             services.AddScoped<IUserStore<MyUser>, MyUserStore>();
 
             services.AddAuthentication("cookies").AddCookie("cookies", options => options.LoginPath="/Home/Login");
